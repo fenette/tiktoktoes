@@ -27,11 +27,18 @@ def print_board(bored):
   print(f" {bored[6]} | {bored[7]} | {bored[8]} ")
 
 def player_input(bored):
-  move = int(input().strip())
-  while bored[move-1] != "-":
-    print("You got fanum taxed, try again.")
-    move = int(input().strip())
-  return move
+  while True:
+    try:
+        move = int(input().strip())
+        if move < 1 or move > 9:
+          print("Can't hear you bucko. Rizz up 1-9. ")
+          continue
+        elif bored[move - 1] != "-":
+          print("You got fanum taxed, try again.")
+        else:
+            return move
+    except ValueError:
+      print("Can't hear you bucko. Rizz up 1-9. ")
 
 def check_win(bored):
     win_positions = [
